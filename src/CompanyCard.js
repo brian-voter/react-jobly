@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-
+import "./CompanyCard.css";
 
 function CompanyCard({company}){
 
   return (
-    <div>
+    <div className="CompanyCard">
       <ul>
         <li>{company.name}</li>
         <li>{company.description}</li>
@@ -14,16 +14,5 @@ function CompanyCard({company}){
   )
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 export default CompanyCard

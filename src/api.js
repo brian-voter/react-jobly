@@ -41,18 +41,18 @@ class JoblyApi {
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
-    let res = await this.request(`companies/${handle}`);
+    const res = await this.request(`companies/${handle}`);
     return res.company;
   }
 
   static async getCompanies(){
-    let res = await this.request(`companies/`);
+    const res = await this.request(`companies/`);
     return res.companies;
   }
 
   static async searchCompanies(searchTerm){
     const data = {nameLike: searchTerm}
-    let res = await this.request(`companies/`, data)
+    const res = await this.request(`companies/`, data)
     return res.companies
   }
 
