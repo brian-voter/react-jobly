@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
+import JobCardList from "./JobCardList";
+import Loading from "./Loading";
 
 
+
+/**
+ * CompanyDetail
+ *
+ *state: data use to store company data and isLoading status
+ *
+ * useParam: uses the companyHandle to get the data for the company
+ *
+ * RoutesList => CompanyDetail => JobCardList
+ *
+ *
+ */
 function CompanyDetail() {
   const { company: companyHandle } = useParams();
 
@@ -23,7 +37,7 @@ function CompanyDetail() {
   }, []);
 
   if (data.isLoading) {
-    return <i>Loading...</i>;
+    return <Loading />;
   }
 
   return (
@@ -31,9 +45,7 @@ function CompanyDetail() {
       <h1>{data.company.name}</h1>
       <p>{data.company.description}</p>
       <ul>
-        {data.company.jobs.map(job =>
-          <li key={job.id}>{job.title}</li> //TODO: turn this into JobCards
-        )}
+       <JobCardList jobs={data.company.jobs}/>
       </ul>
     </div>
   );

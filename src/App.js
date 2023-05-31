@@ -4,16 +4,24 @@ import { BrowserRouter } from "react-router-dom";
 import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
 
+/**
+ * App
+ *
+ *App => NavBar,RoutesList
+ *
+ *
+ *  */
 function App() {
   return (
     <div>
       <BrowserRouter>
-      <NavBar />
-      <RoutesList />
+        <NavBar />
+        <RoutesList />
       </BrowserRouter>
 
-      </div>
+    </div>
   );
 }
 
 export default App;
+

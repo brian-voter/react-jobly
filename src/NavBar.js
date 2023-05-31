@@ -1,6 +1,17 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
-function NavBar(){
+
+
+
+/**
+ * NavBar
+ *
+ *
+ * Link to companies jobs and homepage
+ */
+
+
+function NavBar() {
 
   return (
     <nav>
@@ -8,7 +19,7 @@ function NavBar(){
       <NavLink to={'/companies'} end>Companies</NavLink>
       <NavLink to={'/jobs'} end>Jobs</NavLink>
     </nav>
-  )
+  );
 }
 
 export default NavBar;

@@ -45,16 +45,19 @@ class JoblyApi {
     return res.company;
   }
 
-  static async getCompanies(){
-    const res = await this.request(`companies/`);
-    return res.companies;
-  }
-
-  static async searchCompanies(searchTerm){
-    const data = {nameLike: searchTerm}
-    const res = await this.request(`companies/`, data)
+/** get companies matches search term*/
+  static async getCompanies(nameLike){
+    const res = await this.request(`companies/`, {nameLike})
     return res.companies
   }
+
+/** get jobs matches search term */
+  static async getJobs(title){
+    const res = await this.request(`jobs/`, {title})
+    return res.jobs
+  }
+
+
 
   // obviously, you'll add a lot here ...
 }

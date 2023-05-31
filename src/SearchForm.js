@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-/** Search Form for both company and job */
+/** Search Form for both company and job
+ *
+ *props: search: it's a function that accepts a searchTerm as a argument
+ *
+ *state: keep track of input data
+ *
+ * JobList, CompanyList => SearchForm
+*/
 
 function SearchForm({ search }) {
   const [data, setData] = useState("");
@@ -11,7 +18,7 @@ function SearchForm({ search }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    search(data);
+    search(data || undefined);
     setData("");
   }
 
