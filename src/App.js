@@ -16,9 +16,10 @@ function App() {
     <div>
       <BrowserRouter>
         <NavBar />
-        <RoutesList />
+        <div className="d-flex justify-content-center h-100">
+          <RoutesList />
+        </div>
       </BrowserRouter>
-
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.Card {
+  border: solid 1px black;
+  margin: 5px;
+  padding: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.Card .title {
+  margin: 2px;
+}
+

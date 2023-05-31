@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./JobCard.css";
+import "./Card.css";
 
 
 /**
@@ -14,21 +14,19 @@ import "./JobCard.css";
  *
  */
 
-function JobCard({job}){
+function JobCard({ job }) {
 
   return (
 
-    <div className="jobCard">
-      <ul>
-        <li>{job.title}</li>
-        <li>{job.companyName}</li>
-       <li>{job.salary}</li>
-       <li>{job.equity}</li>
-      </ul>
+    <div className="Card">
+      <h4 className="title">{job.title}</h4>
+      <h6 className="mb-2">{job.companyName}</h6>
+      <div>Salary: {job.salary}</div>
+      <div>Equity: {job.equity}</div>
     </div>
 
-  )
+  );
 
 }
 
-export default JobCard
+export default JobCard;

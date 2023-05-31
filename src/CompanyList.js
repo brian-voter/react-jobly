@@ -29,7 +29,7 @@ function CompanyList() {
   }, []);
 
   if (companies.isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   async function search(searchTerm) {
@@ -43,14 +43,9 @@ function CompanyList() {
   return (
     <div>
       <SearchForm search={search} />
-      <ul>
-        {companies.companyData.length === 0 ? <p>Sorry, No company found</p> : companies.companyData.map(company =>
-          <li key={company.handle}>
-            <CompanyCard company={company} />
-          </li>)}
-      </ul>
-
-
+      {companies.companyData.length === 0 ? <p>Sorry, No company found</p>
+        : companies.companyData.map(company =>
+          <CompanyCard key={company.handle} company={company} />)}
     </div>
   );
 }

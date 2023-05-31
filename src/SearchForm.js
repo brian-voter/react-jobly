@@ -23,10 +23,12 @@ function SearchForm({ search }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input value={data} onChange={handleChange} />
-      <button>Search!</button>
-    </form>
+    <div className="d-flex justify-content-center m-3">
+      <form onSubmit={handleSubmit}>
+        <input value={data} onChange={handleChange} />
+        <button className="mx-2">Search!</button>
+      </form>
+    </div>
   );
 }
 // end
