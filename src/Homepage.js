@@ -6,7 +6,7 @@ import React from "react";
  */
 function Homepage(){
   return (
-    <div className="text-center d-flex flex-column justify-content-center">
+    <div className="text-center d-flex flex-column justify-content-center h-100 ">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
     </div>

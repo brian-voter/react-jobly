@@ -41,6 +41,18 @@ function RoutesList() {
       />
 
       <Route
+        path="/login"
+        element={<LoginForm />}
+      />
+      <Route
+        path="/signup"
+        element={<SignupForm/>}
+      />
+      <Route
+        path="/profile"
+        element={<ProfileForm />}
+      />
+      <Route
         path="/*"
         element={<Navigate to="/" />}
       />
