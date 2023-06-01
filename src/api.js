@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -58,17 +59,44 @@ class JoblyApi {
     return res.jobs
   }
 
-  static async signUp(data){
+  /**
+   * Makes a POST request to backend with the signup form data and returns the
+   * token if signup was successful
+   *
+   * @param {object} data { username, password, firstName, lastName, email }
+   * @returns {string} token
+   */
+  static async signup(data){
     const res = await this.request(`auth/register`,data, "post");
-    return res.token //TODO: is signup form is not completed
+    return res.token //TODO: handle if server returns error instead of token
   }
 
-  static async getUser(){
-    let decoded = jwt_decode(this.token);
+    /**
+   * Makes a POST request to backend with the login data and returns the
+   * token if login was successful
+   *
+   * @param {object} data { username, password }
+   * @returns {string} token
+   */
+    static async login(data) {
+      try {
+        const res = await this.request(`auth/token`,data, "post");
+        return res.token //TODO: handle if server returns error instead of token
+      } catch (err) {
+        throw err[0];
+      }
+    }
+
+  //TODO: docstring
+  static async getUser() {
+    if (!this.token) {
+      return null
+    }
+
+    const decoded = jwtDecode(this.token);
     const username = decoded.username;
     const res = await this.request(`users/${username}`);
-    return res;
-
+    return res.user; //TODO: handle bad login credentials
   }
 
 

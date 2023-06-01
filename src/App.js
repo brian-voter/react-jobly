@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
 import JoblyApi from "./api";
 import userContext from "./userContext";
-import jwt_decode from "jwt-decode";
-
-
 
 /**
  * App
@@ -19,46 +16,51 @@ import jwt_decode from "jwt-decode";
 function App() {
 
   const [token, setToken] = useState("");
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
-
-  useEffect(function getUserOnTokenUpdate(){
-    async function getUser(){
-     JoblyApi.token = token;
-      setUser()
+  useEffect(function getUserOnTokenUpdate() {
+    async function getUser() {
+      JoblyApi.token = token;
+      const user = await JoblyApi.getUser();
+      console.log("user: ", user);
+      setUser(user);
     }
+    getUser();
+  }, [token]);
 
-  },[token]);
 
-
-  function login(data){
-
+  //TODO: docstrings!!!
+  async function login(data) {
+    const newToken = await JoblyApi.login(data);
+    console.log("token: ", newToken);
+    setToken(newToken);
   }
 
-  function signup(data){
-    setToken(JoblyApi.signup(data));
+  async function signup(data) {
+    const newToken = await JoblyApi.signup(data);
+    console.log("token: ", newToken);
+    setToken(newToken);
   }
 
 
-
-  function logout(){
-
-
+  function logout() {
+    setToken("");
   }
+
   return (
     <userContext.Provider value={{user}}>
       {/* // <div className="image"> */}
-    <div className="App" id="image">
+      <div className="App" /*id="image"*/>
 
-      <BrowserRouter>
-        <NavBar />
-        <div className="d-flex justify-content-center h-100">
-          <RoutesList />
+        <BrowserRouter>
+          <NavBar logout={logout}/>
+          <div className="d-flex justify-content-center h-100">
+            <RoutesList signup={signup} login={login}/>
 
-        </div>
-      </BrowserRouter>
-    </div>
-    {/* // </div> */}
+          </div>
+        </BrowserRouter>
+      </div>
+      {/* // </div> */}
     </userContext.Provider>
   );
 }

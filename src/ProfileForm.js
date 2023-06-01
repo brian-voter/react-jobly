@@ -49,4 +49,4 @@ function ProfileForm({ submit }) {
 }
 // end
 
-export default SignupForm;
+export default ProfileForm;

@@ -7,8 +7,16 @@ import Homepage from './Homepage';
 import CompanyList from './CompanyList';
 import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
+import ProfileForm from './ProfileForm';
 
 /**Routes list
+ *
+ * PROPS:
+ * * signup - signup function
+ * * login - login function
+ *
  *
  * routes:
  * "/" => <Homepage  />
@@ -19,7 +27,7 @@ import JobList from './JobList';
  *
  */
 
-function RoutesList() {
+function RoutesList({ signup, login }) {
   return (
     <Routes>
       <Route
@@ -42,11 +50,11 @@ function RoutesList() {
 
       <Route
         path="/login"
-        element={<LoginForm />}
+        element={<LoginForm login={login}/>}
       />
       <Route
         path="/signup"
-        element={<SignupForm/>}
+        element={<SignupForm signup={signup}/>}
       />
       <Route
         path="/profile"
