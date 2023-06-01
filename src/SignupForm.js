@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 
 
@@ -10,23 +12,34 @@ function SignupForm({ signup }) {
     lastName: 'test',
     email: 'test@gmail.com'
   };
+
+  const navigate = useNavigate();
+
   const [data, setData] = useState(initState);
+  const [error,setError] = useState(null)
 
   function handleChange(evt) {
     setData(currState => ({ ...currState, [evt.target.name]: evt.target.value }));
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signup(data);
-    setData(initState);
+    try{
+      await signup(data);
+      navigate("/");
+    }catch(errorMsg){
+      setError(errorMsg)
+    }
   }
+
+
 
   return (
     <div className="d-flex justify-content-center m-3">
 
       <form onSubmit={handleSubmit}>
-
+        <h1>Sign Up</h1>
+        {error && <Alert variant="danger">{error}</Alert>}
         <div>
           <label htmlFor="username">Username</label>
           <input id="username" type="text" name="username" value={data.username} onChange={handleChange} required></input>

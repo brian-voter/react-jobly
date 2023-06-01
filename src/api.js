@@ -67,8 +67,13 @@ class JoblyApi {
    * @returns {string} token
    */
   static async signup(data){
-    const res = await this.request(`auth/register`,data, "post");
-    return res.token //TODO: handle if server returns error instead of token
+    try{
+
+      const res = await this.request(`auth/register`,data, "post");
+      return res.token //TODO: handle if server returns error instead of token
+    }catch(err){
+      throw err[0]
+    }
   }
 
     /**
