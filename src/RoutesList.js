@@ -41,49 +41,25 @@ function RoutesList({ signup, login }) {
 
   const { user } = useContext(userContext);
 
-  //TODO: refactor to use fragments <> and logic circuit
-  if (user) {
-    return (
-      <Routes>
-        <Route
-          path="/"
-          element={<Homepage />}
-        />
-        <Route
-          path="/companies"
-          element={<CompanyList />}
-        />
-        <Route
-          path="/companies/:company"
-          element={<CompanyDetail />}
-        />
-        <Route
-          path="/jobs"
-          element={<JobList />}
-        />
-        <Route
-          path="/profile"
-          element={<ProfileForm />}
-        />
-        <Route
-          path="/*"
-          element={<Navigate to="/" />}
-        />
-      </Routes>
-    );
-  } else { // not logged in
-    return (<Routes>
+
+  return (<Routes>
+
+    {user ? <>
       <Route
         path="/"
         element={<Homepage />}
       />
       <Route
-        path="/login"
-        element={<LoginForm login={login} />}
+        path="/companies"
+        element={<CompanyList />}
       />
       <Route
-        path="/signup"
-        element={<SignupForm signup={signup} />}
+        path="/companies/:company"
+        element={<CompanyDetail />}
+      />
+      <Route
+        path="/jobs"
+        element={<JobList />}
       />
       <Route
         path="/profile"
@@ -93,8 +69,26 @@ function RoutesList({ signup, login }) {
         path="/*"
         element={<Navigate to="/" />}
       />
-    </Routes>);
-  }
+    </>
+      : <> <Route
+        path="/"
+        element={<Homepage />}
+      />
+        <Route
+          path="/login"
+          element={<LoginForm login={login} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignupForm signup={signup} />}
+        />
+        <Route
+          path="/*"
+          element={<Navigate to="/" />}
+        />
+      </>}
+  </Routes>
+  );
 
 
 }

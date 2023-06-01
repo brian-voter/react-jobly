@@ -5,6 +5,7 @@ import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
 import JoblyApi from "./api";
 import userContext from "./userContext";
+import jwtDecode from "jwt-decode";
 
 /**
  * App
@@ -17,21 +18,33 @@ import userContext from "./userContext";
  *
  * App => NavBar, RoutesList
  */
+const TOKEN_STORAGE_KEY = "jobly_token";
 function App() {
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem(TOKEN_STORAGE_KEY));
   const [user, setUser] = useState(null);
 
+
   useEffect(function getUserOnTokenUpdate() {
+
     async function getUser() {
-      //TODO: if token is truthy.... else user -> null
+
       JoblyApi.token = token;
-      //TODO: decode the token here
-      const user = await JoblyApi.getUser();
+      localStorage.setItem(TOKEN_STORAGE_KEY, token);
+      if (!token){
+        setUser(null);
+        return;
+      }
+      const decoded = jwtDecode(token);
+      const username = decoded.username;
+
+      const user = await JoblyApi.getUser(username);
       setUser(user);
     }
     getUser();
   }, [token]);
+
+
 
 
   /**

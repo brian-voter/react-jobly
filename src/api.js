@@ -1,5 +1,5 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -101,13 +101,7 @@ class JoblyApi {
    * to the backend, decoding the username in the currently stored token
    * @returns {object}
    */
-  static async getUser() {
-    if (!this.token) {
-      return null;
-    }
-
-    const decoded = jwtDecode(this.token); //TODO: refactor the username to a param
-    const username = decoded.username;
+  static async getUser(username) {
     const res = await this.request(`users/${username}`);
     return res.user;
   }
