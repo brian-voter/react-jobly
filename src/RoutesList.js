@@ -41,6 +41,7 @@ function RoutesList({ signup, login }) {
 
   const { user } = useContext(userContext);
 
+  //TODO: refactor to use fragments <> and logic circuit
   if (user) {
     return (
       <Routes>

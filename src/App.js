@@ -24,7 +24,9 @@ function App() {
 
   useEffect(function getUserOnTokenUpdate() {
     async function getUser() {
+      //TODO: if token is truthy.... else user -> null
       JoblyApi.token = token;
+      //TODO: decode the token here
       const user = await JoblyApi.getUser();
       setUser(user);
     }

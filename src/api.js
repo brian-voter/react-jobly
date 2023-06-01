@@ -106,7 +106,7 @@ class JoblyApi {
       return null;
     }
 
-    const decoded = jwtDecode(this.token);
+    const decoded = jwtDecode(this.token); //TODO: refactor the username to a param
     const username = decoded.username;
     const res = await this.request(`users/${username}`);
     return res.user;

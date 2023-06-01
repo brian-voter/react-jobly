@@ -38,7 +38,6 @@ function LoginForm({ login }) {
       await login(data);
       navigate("/");
     } catch (errorMsg) {
-      console.log("error in form: ", errorMsg);
       setData(currentData =>
         ({ ...currentData, password: "" })
       );

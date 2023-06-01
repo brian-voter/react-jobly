@@ -23,6 +23,8 @@ function NavBar({ logout }) {
     navigate("/");
   }
 
+  // TODO: refactor to use loggedIn / notLoggedIn functions
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between p-2">
       <NavLink className="nav-link mx-1 fw-bold" to={'/'} end>Jobly</NavLink>
