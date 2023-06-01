@@ -7,6 +7,8 @@ import userContext from "./userContext";
 /**
  * Homepage
  *
+ * displays login/signup buttons if not logged in
+ *
  */
 function Homepage(){
 
@@ -18,14 +20,11 @@ function Homepage(){
       <p>All the jobs in one, convenient place.</p>
       {!user ?
       <div>
-      <Link to="/signup"  className="p-0 px-3 border border-primary" >Sign Up </Link>
-      <Link  to="/login"  className="p-0 px-3 border border-primary" >Log In </Link>
+      <Link to="/signup"  className="m-2 btn btn-primary" >Sign Up </Link>
+      <Link  to="/login"  className="m-2 btn btn-primary" >Log In </Link>
       </div>
-       : `Welcome to Jobly ${user.firstName}`
-
+       : `Welcome to Jobly, ${user.firstName}!`
       }
-
-
     </div>
   )
 }

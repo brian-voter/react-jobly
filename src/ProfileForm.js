@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-
-
+//TODO: implement + add docstring
 function ProfileForm({ submit }) {
   const initState = {
     username:'',
@@ -24,7 +23,9 @@ function ProfileForm({ submit }) {
   return (
     <div className="d-flex justify-content-center m-3">
 
-      <form onSubmit={handleSubmit}>
+    <p>Under Construction!</p>
+
+      {/* <form onSubmit={handleSubmit}>
 
         <label for="username">Username</label>
         <input id="username" type="text" name="username" value={data.username} onChange={handleChange}></input>
@@ -43,7 +44,7 @@ function ProfileForm({ submit }) {
 
 
         <button className="mx-2">Submit!</button>
-      </form>
+      </form> */}
     </div>
   );
 }

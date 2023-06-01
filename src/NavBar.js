@@ -2,18 +2,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import userContext from "./userContext";
 
-
-
 /**
  * NavBar
  *
  * PROPS:
  * * logout - function to log the user out
  *
- * Link to companies jobs and homepage
+ * Links to companies jobs and homepage if logged in, otherwise
+ * links to signup/login pages
  */
-
-
 function NavBar({ logout }) {
 
   const { user } = useContext(userContext);

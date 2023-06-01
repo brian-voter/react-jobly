@@ -18,7 +18,8 @@ class JoblyApi {
   // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
-  static token="";
+
+  static token = "";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -26,8 +27,8 @@ class JoblyApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -47,66 +48,69 @@ class JoblyApi {
     return res.company;
   }
 
-/** get companies matches search term*/
-  static async getCompanies(nameLike){
-    const res = await this.request(`companies/`, {nameLike})
-    return res.companies
+  /** get companies matches search term*/
+  static async getCompanies(nameLike) {
+    const res = await this.request(`companies/`, { nameLike });
+    return res.companies;
   }
 
-/** get jobs matches search term */
-  static async getJobs(title){
-    const res = await this.request(`jobs/`, {title})
-    return res.jobs
+  /** get jobs matches search term */
+  static async getJobs(title) {
+    const res = await this.request(`jobs/`, { title });
+    return res.jobs;
   }
 
   /**
    * Makes a POST request to backend with the signup form data and returns the
    * token if signup was successful
    *
+   * throws up the error message string if unsuccessful
+   *
    * @param {object} data { username, password, firstName, lastName, email }
    * @returns {string} token
    */
-  static async signup(data){
-    try{
-
-      const res = await this.request(`auth/register`,data, "post");
-      return res.token //TODO: handle if server returns error instead of token
-    }catch(err){
-      throw err[0]
+  static async signup(data) {
+    try {
+      const res = await this.request(`auth/register`, data, "post");
+      return res.token;
+    } catch (err) {
+      throw err[0];
     }
   }
 
-    /**
-   * Makes a POST request to backend with the login data and returns the
-   * token if login was successful
-   *
-   * @param {object} data { username, password }
-   * @returns {string} token
-   */
-    static async login(data) {
-      try {
-        const res = await this.request(`auth/token`,data, "post");
-        return res.token //TODO: handle if server returns error instead of token
-      } catch (err) {
-        throw err[0];
-      }
+/**
+ * Makes a POST request to backend with the login data and returns the
+ * token if login was successful
+ *
+ * throws up the error message string if unsuccessful
+ *
+ * @param {object} data { username, password }
+ * @returns {string} token
+ */
+  static async login(data) {
+    try {
+      const res = await this.request(`auth/token`, data, "post");
+      return res.token;
+    } catch (err) {
+      throw err[0];
     }
+  }
 
-  //TODO: docstring
+  /**
+   * If a token has been set, returns the user as object via GET request
+   * to the backend, decoding the username in the currently stored token
+   * @returns {object}
+   */
   static async getUser() {
     if (!this.token) {
-      return null
+      return null;
     }
 
     const decoded = jwtDecode(this.token);
     const username = decoded.username;
     const res = await this.request(`users/${username}`);
-    return res.user; //TODO: handle bad login credentials
+    return res.user;
   }
-
-
-
-  // obviously, you'll add a lot here ...
 }
 
 export default JoblyApi;

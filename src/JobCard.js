@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Card.css";
 
 
@@ -10,10 +10,7 @@ import "./Card.css";
  *props: job
  *
  * JobCardList => JobCard
- *
- *
  */
-
 function JobCard({ job }) {
 
   return (

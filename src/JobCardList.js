@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./JobCardList.css";
 import JobCard from './JobCard'
 
