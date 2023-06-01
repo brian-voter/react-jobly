@@ -3,6 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
+import JoblyApi from "./api";
+import userContext from "./userContext";
+import jwt_decode from "jwt-decode";
+
+
 
 /**
  * App
@@ -12,8 +17,37 @@ import NavBar from "./NavBar";
  *
  *  */
 function App() {
+
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState(null)
+
+
+  useEffect(function getUserOnTokenUpdate(){
+    async function getUser(){
+     JoblyApi.token = token;
+      setUser()
+    }
+
+  },[token]);
+
+
+  function login(data){
+
+  }
+
+  function signup(data){
+    setToken(JoblyApi.signup(data));
+  }
+
+
+
+  function logout(){
+
+
+  }
   return (
-      // <div className="image">
+    <userContext.Provider value={{user}}>
+      {/* // <div className="image"> */}
     <div className="App" id="image">
 
       <BrowserRouter>
@@ -24,8 +58,8 @@ function App() {
         </div>
       </BrowserRouter>
     </div>
-    // </div>
-
+    {/* // </div> */}
+    </userContext.Provider>
   );
 }
 

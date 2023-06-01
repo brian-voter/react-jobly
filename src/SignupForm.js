@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 
-function SignupForm({ submit }) {
+function SignupForm({ signup }) {
   const initState = {
     username:'',
     password:'',
@@ -18,7 +18,7 @@ function SignupForm({ submit }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    submit(data);
+    signup(data);
     setData(initState);
   }
 
@@ -28,19 +28,19 @@ function SignupForm({ submit }) {
       <form onSubmit={handleSubmit}>
 
         <label for="username">Username</label>
-        <input id="username" type="text" name="username" value={data.username} onChange={handleChange}></input>
+        <input id="username" type="text" name="username" value={data.username} onChange={handleChange} required></input>
 
         <label for="password">Password</label>
-        <input id="password" type="password" name="password" value={data.password} onChange={handleChange}></input>
+        <input id="password" type="password" name="password" value={data.password} onChange={handleChange} required></input>
 
         <label for="firstName">First Name</label>
-        <input id="firstName" type="text" name="firstName" value={data.firstName} onChange={handleChange}></input>
+        <input id="firstName" type="text" name="firstName" value={data.firstName} onChange={handleChange} required></input>
 
         <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" name="lastName" value={data.lastName} onChange={handleChange}></input>
+        <input id="lastName" type="text" name="lastName" value={data.lastName} onChange={handleChange} required></input>
 
         <label for="email">Email</label>
-        <input id="email" type="email" name="email" value={data.email} onChange={handleChange}></input>
+        <input id="email" type="email" name="email" value={data.email} onChange={handleChange} required></input>
 
 
         <button className="mx-2">Submit!</button>
