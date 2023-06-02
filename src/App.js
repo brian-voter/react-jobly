@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import JoblyApi from "./api";
 import userContext from "./userContext";
 import jwtDecode from "jwt-decode";
+import Loading from "./Loading";
 
 /**
  * App
@@ -22,7 +23,8 @@ const TOKEN_STORAGE_KEY = "jobly_token";
 function App() {
 
   const [token, setToken] = useState(localStorage.getItem(TOKEN_STORAGE_KEY));
-  const [user, setUser] = useState(null);
+  //user is undefined when Loading, and toggle to null when not logged in. 
+  const [user, setUser] = useState(undefined);
 
 
   useEffect(function getUserOnTokenUpdate() {
@@ -44,6 +46,11 @@ function App() {
     getUser();
   }, [token]);
 
+
+
+if ( user === undefined){
+  return <Loading/>
+}
 
 
 

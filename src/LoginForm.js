@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
  * RoutesList => LoginForm
  */
 function LoginForm({ login }) {
-  const initState = { //FIXME: remove these:
+  const initState = { 
     username: 'test',
     password: 'test1',
   };
@@ -36,13 +36,14 @@ function LoginForm({ login }) {
 
     try {
       await login(data);
-      navigate("/");
     } catch (errorMsg) {
       setData(currentData =>
         ({ ...currentData, password: "" })
-      );
-      setError(errorMsg);
-    }
+        );
+        setError(errorMsg);
+        return;
+      }
+      navigate("/");
   }
 
   return (

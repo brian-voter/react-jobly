@@ -40,10 +40,11 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     try {
       await signup(data);
-      navigate("/");
     } catch (errorMsg) {
       setError(errorMsg);
+      return;
     }
+    navigate("/");
   }
 
   return (
