@@ -79,6 +79,11 @@ function App() {
   function logout() {
     setToken("");
   }
+/** update the profile with the data from user */
+  async function updateProfile(data){
+    const newProfile = await JoblyApi.updateUserProfile(data, user.username);
+    setUser(newProfile)
+  }
 
   return (
     <userContext.Provider value={{ user }}>
@@ -88,7 +93,7 @@ function App() {
         <BrowserRouter>
           <NavBar logout={logout} />
           <div className="d-flex justify-content-center h-100">
-            <RoutesList signup={signup} login={login} />
+            <RoutesList signup={signup} login={login} updateProfile={updateProfile} />
 
           </div>
         </BrowserRouter>

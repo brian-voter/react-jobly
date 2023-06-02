@@ -97,12 +97,19 @@ class JoblyApi {
   }
 
   /**
-   * If a token has been set, returns the user as object via GET request
-   * to the backend, decoding the username in the currently stored token
+   * get user data of the given username
    * @returns {object}
    */
   static async getUser(username) {
     const res = await this.request(`users/${username}`);
+    return res.user;
+  }
+/**
+ * update the user Profile for the login user and updated input value
+ *@return {object}
+ */
+  static async updateUserProfile(data,username){
+    const res = await this.request(`users/${username}`, data, "patch");
     return res.user;
   }
 }

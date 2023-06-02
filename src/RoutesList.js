@@ -37,7 +37,7 @@ import userContext from "./userContext";
  * * "/*" => <Navigate to="/" />: if none of the above go back to homepage
  *
  */
-function RoutesList({ signup, login }) {
+function RoutesList({ signup, login , updateProfile}) {
 
   const { user } = useContext(userContext);
 
@@ -63,7 +63,7 @@ function RoutesList({ signup, login }) {
       />
       <Route
         path="/profile"
-        element={<ProfileForm />}
+        element={<ProfileForm  updateProfile={updateProfile} />}
       />
       <Route
         path="/*"
