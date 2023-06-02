@@ -9,11 +9,11 @@
   pointer-events: none;
 }
 
-#image{
+/* #image{
   background-image: url("https://rithmstudents.slack.com/files/U041DLKTF55/F05ADLHNUPM/jobly-home.png");
   position: fixed;
   height: 100%;
-}
+} */
 
 
 @media (prefers-reduced-motion: no-preference) {

@@ -23,7 +23,7 @@ const TOKEN_STORAGE_KEY = "jobly_token";
 function App() {
 
   const [token, setToken] = useState(localStorage.getItem(TOKEN_STORAGE_KEY));
-  //user is undefined when Loading, and toggle to null when not logged in. 
+  //user is undefined when Loading, and toggle to null when not logged in.
   const [user, setUser] = useState(undefined);
 
 
@@ -94,8 +94,8 @@ if ( user === undefined){
 
   return (
     <userContext.Provider value={{ user }}>
-      {/* // <div className="image"> */}
-      <div className="App" /*id="image"*/>
+
+      <div className="App">
 
         <BrowserRouter>
           <NavBar logout={logout} />
@@ -105,7 +105,7 @@ if ( user === undefined){
           </div>
         </BrowserRouter>
       </div>
-      {/* // </div> */}
+
     </userContext.Provider>
   );
 }

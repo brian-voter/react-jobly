@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function ProfileForm({ updateProfile }) {
 
    const { user } = useContext(userContext);
-   const navigate = useNavigate();
+  //  const navigate = useNavigate();
 
   const initState = {
     firstName:user.firstName,
