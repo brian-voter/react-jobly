@@ -26,7 +26,7 @@ function JobList() {
 
   useEffect(function getJobsWhenMounted() {
     async function getJobs() {
-      const allJobs = await search();
+      await search();
     }
     getJobs();
 
@@ -46,6 +46,7 @@ function JobList() {
 
   return (
     <div>
+      <h1>Jobs</h1>
       <SearchForm search={search} />
       <JobCardList jobs={jobs.jobData} />
     </div>

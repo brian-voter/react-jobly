@@ -98,7 +98,7 @@ if ( user === undefined){
 
         <BrowserRouter>
           <NavBar logout={logout} />
-          <div className="d-flex justify-content-center h-100">
+          <div className="d-flex justify-content-center">
             <RoutesList signup={signup} login={login} updateProfile={updateProfile} />
 
           </div>

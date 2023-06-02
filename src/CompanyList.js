@@ -40,15 +40,12 @@ function CompanyList() {
     });
   }
 
-  //FIXME:
-  // companiesArray.map(company =>
-  //   <CompanyCard key={company.handle} company={company} />
-
   const cards = companies.companyData.map(company =>
     <CompanyCard key={company.handle} company={company} />);
 
   return (
     <div>
+      <h1>Companies</h1>
       <SearchForm search={search} />
       {<Paginator items={cards} />}
     </div>

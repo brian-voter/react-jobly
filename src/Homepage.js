@@ -15,7 +15,7 @@ function Homepage(){
   const { user } = useContext(userContext);
 
   return (
-    <div className="text-center d-flex flex-column justify-content-center h-100 ">
+    <div className="text-center d-flex flex-column justify-content-center mt-5">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {!user ?
