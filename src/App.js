@@ -22,7 +22,7 @@ import Loading from "./Loading";
 const TOKEN_STORAGE_KEY = "jobly_token";
 function App() {
 
-  const [token, setToken] = useState(localStorage.getItem(TOKEN_STORAGE_KEY));
+  const [token, setToken] = useState(localStorage.getItem(TOKEN_STORAGE_KEY) || "");
   //user is undefined when Loading, and toggle to null when not logged in.
   const [user, setUser] = useState(undefined);
 
@@ -30,7 +30,6 @@ function App() {
   useEffect(function getUserOnTokenUpdate() {
 
     async function getUser() {
-
       JoblyApi.token = token;
       localStorage.setItem(TOKEN_STORAGE_KEY, token);
       if (!token){

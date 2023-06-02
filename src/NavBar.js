@@ -28,9 +28,9 @@ function NavBar({ logout }) {
   function loggedIn(){
     return (
       <div className="d-flex justify-content-end gap-3">
-          <NavLink className="nav-link" to={'/companies'}  end>Companies</NavLink>
-          <NavLink className="nav-link" to={'/jobs'} end>Jobs</NavLink>
-          <NavLink className="nav-link" to={'/profile'} end>Profile</NavLink>
+          <Link className="nav-link" to={'/companies'} >Companies</Link>
+          <Link className="nav-link" to={'/jobs'}>Jobs</Link>
+          <Link className="nav-link" to={'/profile'}>Profile</Link>
           <Link className="nav-link" onClick={onClickLogout} >Log out {user.username}</Link>
         </div>
     )
@@ -39,15 +39,15 @@ function NavBar({ logout }) {
   function notLoggedIn(){
     return (
       <div className="d-flex justify-content-end gap-3">
-          <NavLink className="nav-link" to={'/login'} end>Login</NavLink>
-          <NavLink className="nav-link" to={'/signup'} end>Sign Up</NavLink>
+          <Link className="nav-link" to={'/login'}>Login</Link>
+          <Link className="nav-link" to={'/signup'}>Sign Up</Link>
         </div>
     )
   }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between p-2">
-      <NavLink className="nav-link mx-1 fw-bold" to={'/'}  end>Jobly</NavLink>
+      <Link className="nav-link mx-1 fw-bold" to={'/'}>Jobly</Link>
       {user ? loggedIn() : notLoggedIn()}
     </nav>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import "./JobCardList.css";
-import JobCard from './JobCard'
+import JobCard from './JobCard';
+import Paginator from "./Paginator";
 
 /**
  * JobCardList
@@ -14,16 +15,12 @@ import JobCard from './JobCard'
  *
  */
 
-function JobCardList({jobs}){
+function JobCardList({ jobs }) {
 
-  return (
+  const jobCards = jobs.map(job => <JobCard key={job.id} job={job} />);
 
-    <div /*className="JobCardList"*/>
-        {jobs.map(job => <JobCard key={job.id} job={job}/>)}
-    </div>
-
-  )
+  return <Paginator items={jobCards} />;
 
 }
 
-export default JobCardList
+export default JobCardList;

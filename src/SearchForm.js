@@ -8,7 +8,6 @@ import React, { useState } from "react";
  *
  * JobList, CompanyList => SearchForm
 */
-
 function SearchForm({ search }) {
   const [data, setData] = useState("");
 
@@ -19,14 +18,13 @@ function SearchForm({ search }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     search(data || undefined);
-    setData("");
   }
 
   return (
     <div className="d-flex justify-content-center m-3">
-      <form onSubmit={handleSubmit}>
+      <form className="d-flex align-items-center" onSubmit={handleSubmit}>
         <input value={data} onChange={handleChange} />
-        <button className="mx-2">Search!</button>
+        <button className="mx-2 btn btn-primary btn-sm">Search!</button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import JoblyApi from './api';
 import React, { useState, useEffect } from "react";
-import SearchForm from './SearchForm'
+import SearchForm from './SearchForm';
 import JobCardList from './JobCardList';
 import Loading from './Loading';
 
@@ -17,7 +17,7 @@ import Loading from './Loading';
  *
  */
 
-function JobList(){
+function JobList() {
 
   const [jobs, setJobs] = useState({
     jobData: [],
@@ -46,16 +46,10 @@ function JobList(){
 
   return (
     <div>
-    <SearchForm search={search} />
-    <ul>
-
+      <SearchForm search={search} />
       <JobCardList jobs={jobs.jobData} />
-
-    </ul>
-
-
-  </div>
-  )
+    </div>
+  );
 }
 
-export default JobList
+export default JobList;

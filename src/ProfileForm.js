@@ -54,7 +54,7 @@ function ProfileForm({ updateProfile }) {
   return (
     <div className="d-flex flex-column justify-content-start m-5 ">
 
-    <p>Profile</p>
+    <h1>Profile</h1>
 
       <form onSubmit={handleSubmit} className="d-flex flex-column m-3 align-items-start text-start gap-2 fw-bold">
 

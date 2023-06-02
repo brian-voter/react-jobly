@@ -3,6 +3,7 @@ import JoblyApi from "./api.js";
 import SearchForm from './SearchForm';
 import CompanyCard from './CompanyCard';
 import Loading from "./Loading.js";
+import Paginator from "./Paginator.js";
 
 /**
  * CompanyList
@@ -13,7 +14,6 @@ import Loading from "./Loading.js";
  *
  *
  */
-
 function CompanyList() {
 
   const [companies, setCompanies] = useState({
@@ -23,7 +23,7 @@ function CompanyList() {
 
   useEffect(function getCompaniesWhenMounted() {
     async function getCompanies() {
-      const allCompanies = await search();
+      await search();
     }
     getCompanies();
   }, []);
@@ -40,12 +40,17 @@ function CompanyList() {
     });
   }
 
+  //FIXME:
+  // companiesArray.map(company =>
+  //   <CompanyCard key={company.handle} company={company} />
+
+  const cards = companies.companyData.map(company =>
+    <CompanyCard key={company.handle} company={company} />);
+
   return (
     <div>
       <SearchForm search={search} />
-      {companies.companyData.length === 0 ? <p>Sorry, No company found</p>
-        : companies.companyData.map(company =>
-          <CompanyCard key={company.handle} company={company} />)}
+      {<Paginator items={cards} />}
     </div>
   );
 }
